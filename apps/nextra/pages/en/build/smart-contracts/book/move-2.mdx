@@ -2,6 +2,12 @@
 
 The Move 2 language releases are described on this page. The reference documentation of the new features is integrated into the book, and marked in the text with "_Since language version 2.n_".
 
+## Move 2.2
+
+The Move 2.2 language release adds the following features to Move:
+
+- **Optional Acquires**: The `acquires` annotation on function declarations can be omitted, to be inferred by the compiler.
+- **Function Values**: Move now supports function values, which can be passed around as parameters and stored in resources. See the [reference doc here](functions.mdx#function-values).
 ## Move 2.1
 
 The Move 2.1 language release adds the following features to Move:
@@ -35,3 +41,5 @@ The Move 2.0 language release adds the following features to Move:
 - **Well-defined evaluation order** The evaluation order in the cases below is now well-defined (these were previously unspecified):
     - The (a) arguments to a function call, and the (b) operand expressions in a binary operation, are both evaluated from left-to-right.
     - Given a "mutate" expression (see [mutating through a reference](variables.mdx#mutating-through-a-reference)) of the form `*lexp = rexp`, where `lexp` is an expression of type `&mut T` and `rexp` is an expression of type `T`, `rexp` is evaluated first, followed by `lexp`.
+
+- **Bug fix for acquires annotation** [A function should be annotated with `acquires`](functions.mdx#acquires) if and only if it accesses a resource using `move_from`, `borrow_global`, or `borrow_global_mut`, either directly or transitively through a call. Otherwise, it is an error. Previously, when the transitive call graph included a cycle, such errors were not reported: this was incorrect behavior. We have now corrected this behavior to report these errors even when the transitive call graph has cycles.

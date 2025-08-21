@@ -19,11 +19,17 @@ export default {
   deployment: {
     title: "Deployment",
   },
+  debugging: {
+    title: "Debugging",
+  },
   "---aptos-standards---": {
     type: "separator",
     title: "Aptos Standards",
   },
-  objects: {
+  bcs: {
+    title: "Binary Canonical Serialization (BCS)",
+  },
+  object: {
     title: "Object",
   },
   "digital-asset": {
@@ -31,6 +37,9 @@ export default {
   },
   "fungible-asset": {
     title: "Fungible Asset (FA)",
+  },
+  "confidential-asset": {
+    title: "Confidential Asset (CA)",
   },
   "aptos-coin": {
     title: "Coin (legacy)",
@@ -49,8 +58,7 @@ export default {
   table: {
     title: "Table",
   },
-  "aptos-objects": {
-    href: "/en/build/smart-contracts/objects",
+  objects: {
     title: "Objects",
   },
   "resource-accounts": {
@@ -70,8 +78,8 @@ export default {
   "smart-vector": {
     title: "Smart Vector",
   },
-  "smart-table": {
-    title: "Smart Table",
+  maps: {
+    title: "Maps",
   },
   "---examples---": {
     type: "separator",
@@ -102,10 +110,6 @@ export default {
   scripts: {
     title: "Scripts",
   },
-  patterns: {
-    display: "hidden",
-    title: "Patterns",
-  },
   prover: {
     title: "Move Prover",
   },
@@ -127,14 +131,5 @@ export default {
   },
   linter: {
     title: "Linter",
-  },
-  "learn-move": {
-    display: "hidden",
-  },
-  "aptos-standards": {
-    display: "hidden",
-  },
-  tokens: {
-    display: "hidden",
   },
 };

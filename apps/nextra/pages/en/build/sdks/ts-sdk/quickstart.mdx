@@ -40,17 +40,17 @@ To test if you have initialized the package correctly run:
 
 <Tabs items={['npm', 'pnpm', 'yarn']}>
   <Tabs.Tab>
-    ```bash 
+    ```bash
     npx ts-node src/quickstart.ts
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```bash 
+    ```bash
     pnpx ts-node src/quickstart.ts
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```bash 
+    ```bash
     yarn ts-node src/quickstart.ts
     ```
   </Tabs.Tab>
@@ -76,7 +76,7 @@ async function example() {
   );
 
   // Setup the client
-  const config = new AptosConfig({ network: Network.TESTNET });
+  const config = new AptosConfig({ network: Network.DEVNET });
   const aptos = new Aptos(config);
 }
 
@@ -107,7 +107,7 @@ To begin with though, here’s how you can send a basic transaction to transfer 
 
 #### 1. Create an Account
 
-To create a new account, you first generate new credentials then fund the account. On test networks you can fund an account programmatically by asking a "faucet" which has a lot of test APT to send some to your new account.
+To create a new account, you first generate new credentials then fund the account. On localnet / devnet you can fund an account programmatically by asking a "faucet" which has a lot of test APT to send some to your new account.
 
 ```ts filename="quickstart.ts"
 ...
@@ -196,17 +196,17 @@ const executedTransaction = await aptos.waitForTransaction({ transactionHash: pe
 
 <Tabs items={['npm', 'pnpm', 'yarn']}>
   <Tabs.Tab>
-    ```bash 
+    ```bash
     npx ts-node src/quickstart.ts
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```bash 
+    ```bash
     pnpx ts-node src/quickstart.ts
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```bash 
+    ```bash
     yarn ts-node src/quickstart.ts
     ```
   </Tabs.Tab>
@@ -231,7 +231,7 @@ async function example() {
   );
 
   // Setup the client
-  const config = new AptosConfig({ network: Network.TESTNET });
+  const config = new AptosConfig({ network: Network.DEVNET });
   const aptos = new Aptos(config);
 
   // Generate two account credentials
@@ -328,7 +328,7 @@ All told, you just learned how to transfer APT via a transaction by:
 
 1. Connecting to the network using the `Aptos` client.
 2. Creating an account.
-3. Looking up data from on-chain using client helper functions like [`aptos.getAccountModules`](https://aptos-labs.github.io/aptos-ts-sdk/@aptos-labs/ts-sdk-1.13.1/classes/Aptos.html#getAccountModules).
+3. Looking up data from on-chain using client helper functions like [`aptos.getAccountModules`](https://aptos-labs.github.io/aptos-ts-sdk/@aptos-labs/ts-sdk-1.35.0/classes/Aptos.html#getAccountModules).
 4. Signing and submitting a transaction to the network.
 5. Waiting for Aptos to execute the transaction.
 
@@ -337,5 +337,5 @@ To see all this in action, you can copy and run the full working code snippet fo
 <Callout type="info">
 For future development, make sure to bookmark the [reference docs](https://aptos-labs.github.io/aptos-ts-sdk/) to look up specific function signatures.
 
-Note that most helper functions are listed on the [`Aptos` client object](https://aptos-labs.github.io/aptos-ts-sdk/@aptos-labs/ts-sdk-1.13.1/classes/Aptos.html).
+Note that most helper functions are listed on the [`Aptos` client object](https://aptos-labs.github.io/aptos-ts-sdk/@aptos-labs/ts-sdk-1.35.0/classes/Aptos.html).
 </Callout>

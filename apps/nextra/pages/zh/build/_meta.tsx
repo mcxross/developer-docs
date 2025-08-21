@@ -1,8 +1,10 @@
 export default {
-  "get-started": "开始",
-  cli: "CLI",
+  "get-started": "Get Started",
+  "smart-contracts": "Smart Contracts (Move)",
   apis: "APIs",
-  guides: "Guides",
-  indexer: "Indexer",
   sdks: "SDKs",
+  indexer: "Indexer",
+  cli: "CLI",
+  "create-aptos-dapp": "create-aptos-dapp",
+  guides: "Guides",
 };

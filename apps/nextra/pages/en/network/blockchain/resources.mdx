@@ -5,7 +5,7 @@ id: "resources"
 
 # Resources
 
-On Aptos, on-chain state is organized into resources and modules. These are then stored within the individual accounts. This is different from other blockchains, such as Ethereum, where each smart contract maintains their own storage space. See [Accounts](accounts.mdx) for more details on accounts.
+On Aptos, on-chain state is organized into resources and modules. These are then stored within the individual accounts. This is different from other blockchains, such as Ethereum, where each smart contract maintains its own storage space. See [Accounts](accounts.mdx) for more details on accounts.
 
 ## Resources vs Instances
 
@@ -35,7 +35,7 @@ struct CustomCoinBox<phantom CoinType> has key {
 
 ## Define resources and objects
 
-All instances and resources are defined within a module that is stored at an address. For example `0x1234::coin::Coin<0x1234::coin::SomeCoin>` would be represented as:
+All instances and resources are defined within a module that is stored at an address. For example `0x1234::coin::CoinStore<0x1234::coin::SomeCoin>` would be represented as:
 
 ```move
 module 0x1234::coin {
@@ -47,7 +47,7 @@ module 0x1234::coin {
 }
 ```
 
-In this example, `0x1234` is the address, `coin` is the module, `Coin` is a struct that can be stored as a resource, and `SomeCoin` is a struct that is unlikely to ever be represented as an instance. The use of the phantom type allows for there to exist many distinct types of `CoinStore` resources with different `CoinType` parameters.
+In this example, `0x1234` is the address, `coin` is the module, `CoinStore` is a struct that can be stored as a resource, and `SomeCoin` is a struct that is unlikely to ever be represented as an instance. The use of the phantom type allows for there to exist many distinct types of `CoinStore` resources with different `CoinType` parameters.
 
 ## Permissions of Instances including Resources
 
@@ -57,7 +57,7 @@ Ownership, on the other hand, is signified by either storing a resource under an
 
 ## Viewing a resource
 
-Resources are stored within accounts. Resources can be located by searching within the owner's account for the resource at its full query path inclusive of the account where it is stored as well as its address and module. Resources can be viewed on the [Aptos Explorer](https://explorer.aptoslabs.com/) by searching for the owning account or be directly fetched from a fullnode's API.
+Resources are stored within accounts. Resources can be located by searching within the owner's account for the resource at its full query path inclusive of the account where it is stored as well as its address and module. Resources can be viewed on the [Aptos Explorer](https://explorer.aptoslabs.com/) by searching for the owning account or directly fetched from a fullnode's API.
 
 ## How resources are stored
 

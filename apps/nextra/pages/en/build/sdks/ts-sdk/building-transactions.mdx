@@ -10,7 +10,7 @@ import { Callout, Steps } from 'nextra/components';
 Transactions allow you to change on-chain data or trigger events. Generally, transactions follow 5 steps from building to executing on chain: building, simulating, signing, submitting, and waiting.
 
 <Callout type="info">
-For these examples, `aptos` is an instance of the [`Aptos`](https://aptos-labs.github.io/aptos-ts-sdk/@aptos-labs/ts-sdk-1.12.2/classes/Aptos.html) client object.
+For these examples, `aptos` is an instance of the [`Aptos`](https://aptos-labs.github.io/aptos-ts-sdk/@aptos-labs/ts-sdk-1.35.0/classes/Aptos.html) client object.
 </Callout>
 
 <Steps>
@@ -51,7 +51,7 @@ The SDK provides sensible defaults for these values if they are not specified ex
 
 ### Simulate (Optional)
 
-Every transaction on the Aptos chain has a gas fee associated with how much work the network machines have to do when executing the transaction. In order to estimate the cost associated with that, you can simulate transactions before committing them. 
+Every transaction on the Aptos chain has a gas fee associated with how much work the network machines have to do when executing the transaction. In order to estimate the cost associated with that, you can simulate transactions before committing them.
 
 <Callout type="info">
 This simulation only requires the `publicKey` of an account since it will not impact the actual state of the ledger.
@@ -93,7 +93,7 @@ const committedTransaction = await aptos.transaction.submit.simple({
 
 ### Wait
 
-Finally, you can wait for the result of the transaction by using [`aptos.waitForTransaction`](https://aptos-labs.github.io/aptos-ts-sdk/@aptos-labs/ts-sdk-1.12.2/classes/Aptos.html#waitForTransaction) and specifying the hash of the transaction you just submitted like so:
+Finally, you can wait for the result of the transaction by using [`aptos.waitForTransaction`](https://aptos-labs.github.io/aptos-ts-sdk/@aptos-labs/ts-sdk-1.35.0/classes/Aptos.html#waitForTransaction) and specifying the hash of the transaction you just submitted like so:
 
 ```ts filename="build-a-transaction.ts"
 // 5. Wait
@@ -120,7 +120,7 @@ async function example() {
     console.log("This example will create two accounts (Alice and Bob) and send a transaction transfering APT to Bob's account.");
 
     // 0. Setup the client and test accounts
-    const config = new AptosConfig({ network: Network.TESTNET });
+    const config = new AptosConfig({ network: Network.DEVNET });
     const aptos = new Aptos(config);
 
     let alice = Account.generate();
@@ -134,7 +134,7 @@ async function example() {
     await aptos.fundAccount({
         accountAddress: alice.accountAddress,
         amount: 100_000_000,
-    });  
+    });
     await aptos.fundAccount({
         accountAddress: bob.accountAddress,
         amount: 100,
@@ -200,7 +200,9 @@ Building and sending transactions on-chain involves the following 5 steps:
 
 Transactions have a couple of additional features which let them adapt to your needs which you can learn about here:
 
-1. [Multi-Agent Signatures](building-transactions/multi-agent-transactions.mdx) - Allowing multiple accounts to be used for a single contract.
-2. [Sponsoring Transactions](building-transactions/sponsoring-transactions.mdx) - Have another account pay gas fees for this transaction.
-3. [Batch Submit Transactions](building-transactions/batching-transactions.mdx) - How to send multiple transactions quickly from a single account.
-4. [Binary Canonical Serialization (BCS)](building-transactions/bcs-format.mdx) - The format used to serialize data for Aptos transactions.
+1. [Multi-Agent Transactions](building-transactions/multi-agent-transactions.mdx) - Allowing multiple accounts to interact with a single transaction.
+2. [Orderless Transactions](building-transactions/orderless-transactions.mdx) - Allowing for transactions to be executed out of order for easier management.
+3. [Sponsoring Transactions](building-transactions/sponsoring-transactions.mdx) - Have another account pay gas fees for this transaction.
+4. [Batch Submit Transactions](building-transactions/batching-transactions.mdx) - How to send multiple transactions quickly from a single account.
+5. [Binary Canonical Serialization (BCS)](building-transactions/bcs-format.mdx) - The format used to serialize data for Aptos transactions.
+7. [Composing multiple Move calls with ScriptComposer](building-transactions/script-composer.mdx) - (Experimental) Building more complex transaction payload that calls into multiple Move functions dynamically.
